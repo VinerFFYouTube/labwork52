@@ -2,15 +2,22 @@ import React from "react";
 
 interface CardProps {
     rank: string;
-    suit: string;
+    suit: 'diams' | 'hearts' | 'clubs' | 'spades';
 }
 
-const Card: React.FC<CardProps> = ({rank, suit}) => {
+const cardSuit = {
+    diams: '♦',
+    hearts: '♥',
+    clubs: '♣',
+    spades: '♠'
+}
+
+const Card: React.FC<CardProps> = ({ rank, suit }) => {
     return (
         <>
-            <span className="card rank-k diams">
-                <span className="rank">{rank}</span>
-                <span className="suit">{suit}</span>
+            <span className={`card rank-${rank.toLowerCase()} ${suit}`}>
+                <span className="rank">{rank.toUpperCase()}</span>
+                <span className="suit">{cardSuit[suit]}</span>
             </span>
         </>
     )
